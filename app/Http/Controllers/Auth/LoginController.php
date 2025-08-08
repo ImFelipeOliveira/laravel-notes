@@ -22,7 +22,7 @@ class LoginController extends Controller
         if ($user && password_verify($credentials['password'], $user->password)) {
             $this->createSession($request, $user);
             $this->updateLastLogin($user);
-            return redirect('/dashboard');
+            return redirect('/');
         }
         return redirect()->back()->withInput()->withErrors(['loginError' => 'Invalid credentials']);
     }
