@@ -11,7 +11,7 @@ class MainController extends Controller
     {
         $id = $request->session()->get("user")['id'];
         $user = User::find($id)->toArray();
-        $notes = User::find($id)->notes()->get()->toArray();
+        $notes = User::find($id)->notes()->whereNull('deleted_at')->get()->toArray();
 
         $data = [
             'user' => $user,
